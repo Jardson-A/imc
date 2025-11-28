@@ -34,11 +34,12 @@ const inputPaciente = {
 };
 
 const dados = {
-  nome,
-  sobrenome,
-  peso,
-  altura,
-  imc: "",
+  nome: "",
+  sobrenome: "",
+  peso: 0,
+  altura: 0,
+  imc: 0,
+
 };
 
 // Seleção dos elementos do DOM / HTML
@@ -75,7 +76,7 @@ Ela recebe os valores de cálculo dentro do parenteses (entradaDados)
 */
 function calcularIMC(entradaDados) {
   // Pega o valor da divisão de peso pelo quadrado da altura e salva em dados.imc
-  dados.imc = entradaDados.peso / entradaDados.altura ** 2;
+  dados.imc = (entradaDados.peso / entradaDados.altura ** 2).toFixed(2);
 
   // Com base no valor do dados.imc, faz a verificação da faixa de peso
   if (dados.imc < 18.5) {
@@ -91,6 +92,7 @@ function calcularIMC(entradaDados) {
   } else {
     inserirResultado("Obesidade grau 3", dados.imc);
   }
+
 }
 
 function inserirResultado(faixa, resultado) {
@@ -98,7 +100,7 @@ function inserirResultado(faixa, resultado) {
 
   paragrafo.innerText = "";
 
-  paragrafo.innerText = `O paciente tem um IMC de: ${resultado} e está com ${faixa}`;
+  paragrafo.innerText = `O Paciente ${dados.nome} ${dados.sobrenome} tem um IMC de: ${resultado} e está com ${faixa}`;
 
 //  body.appendChild(paragrafo);
 }
